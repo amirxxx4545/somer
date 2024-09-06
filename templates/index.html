@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    li{
+        font-size: 12px !important;
+    }
+    p{
+        font-size: 13px !important;
+    }
+</style>
+<h1 class="mb-4">جدید ترین فیلم ها</h1>
+<div class="row">
+    {% for movie in movies %}
+        <div class="col-md-4" style="height: 80%;">
+            <div class="card mb-4">
+                {% if movie.image_link %}
+                <img src="{{ movie.image_link }}" class="card-img-top" alt="{{ movie.title }}" >
+                {% endif %}
+                <div class="card-body">
+                    <h6 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ limit_description(movie.description )}}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">زبان: {{ movie.language }}</li>
+                        <li class="list-group-item">حجم: {{ movie.size }}</li>
+                        <li class="list-group-item">کیفیت: {{ movie.quality }}</li>
+                        <li class="list-group-item">مدت زمان: {{ movie.duration }}</li>
+                    </ul>
+                    <a href="{{ movie.link }}" class="btn btn-primary mt-3" target="_blank">دانلود </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {{ pagination.links }}
+    </ul>
+</nav>
+{% endblock %}

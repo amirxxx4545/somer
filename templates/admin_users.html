@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">مدیریت کاربران ادمین</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">شناسه</th>
+            <th scope="col">نام کاربری</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for admin in admins %}
+        <tr>
+            <th scope="row">{{ admin.id }}</th>
+            <td>{{ admin.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

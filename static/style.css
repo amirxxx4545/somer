@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif; background-color: #7700ff;
+}
+
+nav a {
+    margin-right: 15px;
+}
+
+.movie {
+    margin-bottom: 20px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin-right: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+li{
+    font-size: 12px !important;
+}
+body.dark {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  body.dark .navbar {
+    background-color: #444;
+  }
+  
+  body.dark .navbar a {
+    color: #fff;
+  }
+  
+  body.dark .navbar .nav-link {
+    color: #600000;
+  }
+  
+  body.dark .container {
+    background-color: #7700ff;
+    color: #001aff;
+  }

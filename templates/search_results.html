@@ -1,0 +1,30 @@
+<!-- templates/search_results.html -->
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>نتایج جستجو</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>نتایج جستجو برای: "{{ search_query }}"</h1>
+        {% if movies %}
+            <div class="mt-3">
+                <ul class="list-group">
+                    {% for movie in movies %}
+                        <li class="list-group-item">
+                            <h5>{{ movie.title }}</h5>
+                            <p><strong>توضیحات:</strong> {{ movie.description }}</p>
+                            <p><strong>زبان:</strong> {{ movie.language }} | <strong>کیفیت:</strong> {{ movie.quality }} | <strong>مدت زمان:</strong> {{ movie.duration }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="alert alert-warning mt-4">فیلمی با این نام پیدا نشد.</div>
+        {% endif %}
+        <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">برگشت به صفحه اصلی</a>
+    </div>
+</body>
+</html>

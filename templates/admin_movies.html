@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">مدیریت فیلم ها</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ای دی</th>
+            <th scope="col">عنوان</th>
+            <th scope="col">عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <th scope="row">{{ movie.id }}</th>
+            <td>{{ movie.title }}</td>
+            <td>
+                <a href="{{ url_for('edit_movie', movie_id=movie.id) }}" class="btn btn-warning">Edit</a>
+
+                <a href="{{ url_for('delete_movie', movie_id=movie.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('admin') }}" class="btn btn-success">اضافه کردن فیلم جدید</a>
+{% endblock %}

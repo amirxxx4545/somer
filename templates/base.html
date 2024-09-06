@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبسایت فیلم</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            direction: rtl; /* راست به چپ */
+            text-align: right; /* تراز متن به راست */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">سایت فیلم</a>
+            <button class="navbar-toggler rounded-0 btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('index') }}">خانه</a>
+                    </li>
+                    {% if session.get('admin_id') %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('admin_movies') }}">مدیریت فیلم‌ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('admin_users') }}">مدیریت کاربران</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('logout') }}">خروج</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('login') }}">ورود</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded-0 btn-success text-end" href="{{ url_for('support') }}">پشتیبانی</a>
+                    </li>
+                </ul>
+                <form method="POST" action="{{ url_for('search') }}" class="d-flex ms-auto">
+                    <input class="form-control" type="search" name="search" placeholder="جستجو" aria-label="جستجو" required>
+                    <button class="btn btn-success mx-2 rounded-0" type="submit">جستجو</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
